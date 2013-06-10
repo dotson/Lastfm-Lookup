@@ -13,3 +13,5 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 
 ######v.01
 Initial Release
+######v.02
+Add additional feedback for original artist.
