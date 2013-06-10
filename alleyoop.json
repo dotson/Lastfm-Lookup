@@ -1,5 +1,5 @@
 {
-    "version": 0.1,
+    "version": 0.2,
     "download_url": "https://github.com/dotson/Lastfm-Lookup/raw/master/Last.fm%20Look-Up.alfredworkflow",
-    "description": "Initial Release"
+    "description": "Add additional feedback for original artist."
 }
