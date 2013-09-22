@@ -5,7 +5,8 @@ Lastfm-Lookup
 
 Search Last.fm database for an artist and retrieve a list of suggested artists. Selecting the similar artist from Alfred's list takes you to the Last.fm page for more info.
 
-- "LS" triggers the workflow.
+- "LS" or Hotkey triggers the workflow.
+- Initially populates with a search for the currently playing track in iTunes, if one is playing.
 - As you type an artist name, the workflow searches Last.fm for your query and provides a list of possible matches.
 - Selecting an artist form the list provides a new list of Last.fm's Similar Artists for the previously chosen one.
 - Selecting an artist from the new list takes you to their Last.fm page.
@@ -15,3 +16,5 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 Initial Release
 ######v.02
 Add additional feedback for original artist.
+######v.03
+Add Hotkey support. Now defaults to populating current playing artist from iTunes.
