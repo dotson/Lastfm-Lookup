@@ -11,6 +11,7 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 - Selecting an artist form the list provides a new list of Last.fm's Similar Artists for the previously chosen one.
 - Selecting an artist from the new list takes you to their Last.fm page.
 
+**Changelog:**
 
 - **v1.0** New Icons (modified from here:http://www.alessioatzeni.com/metrize-icons/); Official Packal Release. Includes external trigger so you can open this workflow via others.
 - **v.03** Add Hotkey support. Now defaults to populating current playing artist from iTunes.
