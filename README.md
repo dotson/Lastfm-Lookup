@@ -15,7 +15,7 @@ http://www.packal.org/workflow/lastfm-look*
 - Selecting an artist from the new list takes you to their Last.fm page.
 
 **Changelog:**
-
+- **v1.02** Included external trigger to enable this workflow to be triggered by my other workflow, DJ Pedro (v1.4.1).
 - **v1.01** Fixed the Yosemite bug in the alfred q_workflow library.
 - **v1.0** New Icons (modified from here:http://www.alessioatzeni.com/metrize-icons/); Official Packal Release. Includes external trigger so you can open this workflow via others.
 - **v.03** Add Hotkey support. Now defaults to populating current playing artist from iTunes.
