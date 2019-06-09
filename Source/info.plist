@@ -94,6 +94,8 @@
 				<integer>2</integer>
 				<key>escaping</key>
 				<integer>102</integer>
+				<key>keyword</key>
+				<string>ls</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -106,8 +108,8 @@
 				<string></string>
 				<key>script</key>
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist='https://raw.githubusercontent.com/dotson/iTunes-Airplay-Toggle/master/Source/info.plist'
-readonly workflow_url='https://github.com/dotson/iTunes-Airplay-Toggle/raw/master/iTunes%20Airplay%20Toggle.alfredworkflow'
+readonly remote_info_plist='https://raw.githubusercontent.com/dotson/Lastfm-Lookup/master/Source/info.plist'
+readonly workflow_url='https://github.com/dotson/Lastfm-Lookup/raw/master/Last.fm%20Look-Up.alfredworkflow'
 readonly download_type='github_release'
 readonly frequency_check='4'
 
@@ -518,7 +520,7 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.0</string>
+	<string>1.2.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/dotson/Lastfm-Lookup</string>
 </dict>
