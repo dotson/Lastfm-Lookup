@@ -10,7 +10,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>FEA0C7EF-3E08-4DAB-A8B8-CD38C1305344</string>
+				<string>75DA8139-FA68-4C6B-8383-639D3ACC6464</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -31,32 +31,19 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B104381E-1A26-4D7F-B781-45FD7AB09E14</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>9884769E-27DA-48F7-9765-FF3F73F7B5E2</key>
 		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>75DA8139-FA68-4C6B-8383-639D3ACC6464</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>FEA0C7EF-3E08-4DAB-A8B8-CD38C1305344</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>1D4B7C7A-9945-46A4-8149-3FC043D2FB7A</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
 			<dict>
 				<key>destinationuid</key>
 				<string>75DA8139-FA68-4C6B-8383-639D3ACC6464</string>
@@ -91,21 +78,100 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
-				<integer>102</integer>
+				<integer>4</integer>
 				<key>keyword</key>
 				<string>ls</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<true/>
+				<false/>
 				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
 				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
 				<key>runningsubtext</key>
+				<string>One moment, checking Last.fm...</string>
+				<key>script</key>
+				<string>set workflowFolder to do shell script "pwd"set wlib to load script POSIX file (workflowFolder &amp; "/q_workflow.scpt")set wf to wlib's new_workflow()-- INITIALIZE THE ICONS and LINKS --set artistIcon to "artist.png"set lfmCorrectionLink to "http://ws.audioscrobbler.com/2.0/?method=artist.getcorrection&amp;artist="set lfmSearchLink to "http://ws.audioscrobbler.com/2.0/?method=artist.search&amp;format=json&amp;artist="set lfmSimLink to "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&amp;format=json&amp;artist="set apiKey to (system attribute "apiKey")set query to "{query}"--set nowPlayingQuery to ""-- DETERMINE WHERE IN DRILL DOWN WE AREtell application "System Events"	set queryList to wlib's q_split(query, " ⇾ ")	set stepCount to count of queryListend tellif stepCount is less than 2 then		if length of query is 0 then		-- check for currently playing artist in Music app		if application "Music" is running then			tell application "Music"				if player state is playing then					set thisSong to current track					set nowPlayingQuery to (get artist of thisSong)					set query to nowPlayingQuery				end if			end tell		end if		add_result of wf without isValid given theUid:"", theArg:"", theTitle:"Current Artist: " &amp; nowPlayingQuery, theAutocomplete:"", theSubtitle:"Select below to explore in Alfred window or Cmd+Y for Quicklook.", theIcon:"", theType:""			end if		tell application "System Events"				set resultCount to 0		set searchLimit to (system attribute "searchLimit")				set queryString to wf's q_encode_url(query as string)		set lfmSearchLink to lfmSearchLink &amp; queryString &amp; "&amp;api_key=" &amp; apiKey		set json to wf's request_json(lfmSearchLink)		set results to results of json		set resultCount to |opensearch:totalResults| of results				if resultCount is less than 1 then			add_result of wf with isValid given theUid:"", theArg:"", theTitle:"No matches for: " &amp; queryString, theAutocomplete:"", theSubtitle:"Check your spelling, or maybe you need less obscure taste in music.", theIcon:"", theType:"", theQuicklook:""		else						if resultCount is greater than searchLimit then				set resultCount to searchLimit			end if						set artistMatches to artistMatches of results			set artistList to (artist of artistMatches)			repeat with i from 1 to searchLimit				set thisResult to item i of artistList				set thisName to |name| of thisResult				set thisUrl to |url| of thisResult				set thisListeners to (listeners of thisResult) as integer				set thisListeners to do shell script "echo " &amp; thisListeners &amp; " | perl -lpe'1 while s/^([-+]?\\d+)(\\d{3})/$1,$2/'"								add_result of wf without isValid given theUid:"", theArg:thisUrl, theTitle:thisName, theAutocomplete:thisName &amp; " ⇾ ", theSubtitle:thisListeners &amp; " Listeners", theIcon:artistIcon, theType:"", theQuicklook:thisUrl							end repeat		end if	end tellend ifif stepCount is 2 then		tell application "System Events"				set resultCount to 0		set similarLimit to (system attribute "similarLimit")				set queryString to item 1 of queryList		set queryStringEncode to wf's q_encode_url(queryString as string)		set lfmSimLink to lfmSimLink &amp; queryStringEncode &amp; "&amp;api_key=" &amp; apiKey &amp; "&amp;limit=" &amp; similarLimit		set json to wf's request_json(lfmSimLink)		set resultCount to count of artist of similarartists of json				if resultCount is less than 1 then			add_result of wf with isValid given theUid:"", theArg:"", theTitle:"No matches for: " &amp; queryString, theAutocomplete:"", theSubtitle:"Check your spelling, or maybe you need less obscure taste in music.", theIcon:"", theType:"", theQuicklook:""		else						if resultCount is greater than similarLimit then				set resultCount to similarLimit			end if						add_result of wf without isValid given theUid:"", theArg:"", theTitle:"Similar Artists:", theAutocomplete:"", theSubtitle:"Select to open Last.fm in browser. Cmd+Y to view in Quicklook", theIcon:"", theType:"", theQuicklook:""						set artistList to (artist of similarartists of json)			repeat with i from 1 to similarLimit				set thisResult to item i of artistList				set thisName to |name| of thisResult				set thisUrl to |url| of thisResult				add_result of wf with isValid given theUid:"", theArg:thisUrl, theTitle:thisName, theAutocomplete:"", theSubtitle:"", theIcon:artistIcon, theType:"", theQuicklook:thisUrl							end repeat					end if			end tell	end if-- return XML datawf's to_xml("")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
 				<string></string>
+				<key>subtext</key>
+				<string>Get similar artists from Last.fm</string>
+				<key>title</key>
+				<string>Last.fm Similar Artist Look-Up</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>75DA8139-FA68-4C6B-8383-639D3ACC6464</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>37</integer>
+				<key>hotmod</key>
+				<integer>1310720</integer>
+				<key>hotstring</key>
+				<string>L</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>41CAF0BA-B8EA-42C4-BB2F-39BE9886AC0E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string>+</string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
 				<key>script</key>
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
 readonly remote_info_plist='https://raw.githubusercontent.com/dotson/Lastfm-Lookup/master/Source/info.plist'
@@ -180,256 +246,15 @@ fi</string>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
 				<key>type</key>
 				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>1D4B7C7A-9945-46A4-8149-3FC043D2FB7A</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>37</integer>
-				<key>hotmod</key>
-				<integer>1310720</integer>
-				<key>hotstring</key>
-				<string>L</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>41CAF0BA-B8EA-42C4-BB2F-39BE9886AC0E</string>
+			<string>B104381E-1A26-4D7F-B781-45FD7AB09E14</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>keyword</key>
-				<string>ls</string>
-				<key>queuedelaycustom</key>
-				<integer>1</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>One moment, checking Last.fm.</string>
-				<key>script</key>
-				<string>property apiKey : "7b0b713a611b9e099b470baadab061c1"
-
-set workflowFolder to do shell script "pwd"
-set wlib to load script POSIX file (workflowFolder &amp; "/q_workflow.scpt")
-set wf to wlib's new_workflow()
-
-set preflist to {"theArtist", "theArtistURL"}
-set prefvals to {"", ""}
-repeat with i from 1 to (count of preflist)
-	set mypref to item i of preflist
-	set myval to item i of prefvals
-	if wf's get_value(mypref, "settings.plist") is missing value then wf's set_value(mypref, myval, "settings.plist")
-end repeat
-set theArtist to wf's get_value("theArtist", "settings.plist")
-set theArtistURL to wf's get_value("theArtistURL", "settings.plist")
-
--- INITIALIZE THE ICONS --
-set artistIcon to "Icons/artist.png"
-set lastfmLink to "http://ws.audioscrobbler.com/2.0/?method=artist.getcorrection&amp;artist="
-set lastfmSimLink to "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&amp;artist="
-
--- retrieve search query
-set xmlFile to "importLastFmListTemp.xml"
-set query to "{query}"
-
-tell application "System Events"
-	set stepCount to wlib's q_split(query, " ⇾ ")
-end tell
-
--- get currently playing artist in iTunes
-set nowPlayingQuery to ""
-tell application "iTunes"
-	if player state is playing then
-		set thisSong to current track
-		set nowPlayingQuery to (get artist of thisSong)
-	end if
-end tell
-
-if (count of stepCount) is less than 2 then
-
-	if length of query is 0 then
-		set query to nowPlayingQuery
-	end if
-	if length of query is less than 3 then
-		add_result of wf without isValid given theUid:"searching", theArg:"", theTitle:"Last.fm Similar Artist Look-Up", theAutocomplete:"", theSubtitle:"Enter artist to search for... " &amp; query, theIcon:"", theType:"", theQuicklook:""
-	end if
-
-	if length of query is greater than 2 then
-
-		tell application "System Events"
-
-			set limit to 1
-			set needFilter to false
-			if length of wlib's q_split(query, " ") is 1 then
-				set needFilter to true
-				set limit to 10
-			end if
-
-			set requestArtist to wf's q_encode_url(query as string)
-			set lastfmLink to lastfmLink &amp; requestArtist &amp; "&amp;api_key=" &amp; apiKey
-			set requestedXML to wf's request(lastfmLink)
-			wf's write_file(requestedXML, xmlFile)
-
-			tell XML element "correction" of XML element "corrections" of XML element "lfm" of contents of XML file (wf's get_data() &amp; xmlFile)
-				if (count of XML element) is greater than 0 then
-					repeat with thisElement from 1 to (count of XML elements)
-						set display to false
-						set thisArtist to (value of (XML elements whose name is "name") of XML element thisElement) as string
-						set thisURL to (value of (XML elements whose name is "url") of XML element thisElement) as string
-						--						set thisIcon to (value of (XML elements whose name is "image") of XML element thisElement) as string
-
-						if needFilter then
-							if thisArtist is query then set display to true
-						else
-							set display to true
-						end if
-
-						if display then
-							wf's set_value("theArtist", thisArtist, "settings.plist")
-							wf's set_value("theArtistURL", thisURL, "settings.plist")
-							if query is nowPlayingQuery then
-								add_result of wf with isValid given theUid:"gotolastfm", theArg:thisURL, theTitle:"Currently Playing: " &amp; thisArtist, theAutocomplete:thisArtist &amp; " ⇾ ", theSubtitle:"Select to visit Last.fm profile.", theIcon:"", theType:"", theQuicklook:thisURL
-							else
-								add_result of wf with isValid given theUid:"gotolastfm", theArg:thisURL, theTitle:thisArtist, theAutocomplete:thisArtist &amp; " ⇾ ", theSubtitle:"Select to visit Last.fm profile.", theIcon:"", theType:"", theQuicklook:thisURL
-							end if
-							add_result of wf without isValid given theUid:"showSim", theArg:"", theTitle:"Show Similar Artists For: " &amp; thisArtist, theAutocomplete:thisArtist &amp; " ⇾ ", theSubtitle:"In the Alfred window.", theIcon:"", theType:"", theQuicklook:""
-							exit repeat
-						end if
-
-					end repeat
-				end if
-
-				set xmlCount to count of wf's get_results()
-				if xmlCount is less than 1 then
-					add_result of wf without isValid given theUid:"error", theArg:"", theTitle:"No matches for: " &amp; query, theAutocomplete:"", theSubtitle:"Check your spelling, or maybe you need less obscure taste in music.", theIcon:"", theType:"", theQuicklook:""
-				end if
-
-			end tell
-
-		end tell
-	end if
-end if
-
-if (count of stepCount) is 2 then
-	tell application "System Events"
-
-		set theArtistURL to theArtistURL &amp; "/+similar"
-		add_result of wf with isValid given theUid:"", theArg:theArtistURL, theTitle:"Top Similar Artists:", theAutocomplete:theArtist &amp; ": ", theSubtitle:"Select to view all similar artists at Last.fm.", theIcon:"", theType:"", theQuicklook:""
-
-		set requestArtist to wf's q_encode_url(theArtist)
-		set lastfmSimLink to lastfmSimLink &amp; requestArtist &amp; "&amp;api_key=" &amp; apiKey &amp; "&amp;limit=10"
-		set requestedXML to wf's request(lastfmSimLink)
-		wf's write_file(requestedXML, xmlFile)
-		tell XML element "similarartists" of XML element "lfm" of contents of XML file (wf's get_data() &amp; xmlFile)
-			repeat with thisElement from 1 to (count of XML elements)
-				set thisArtist to (value of (XML elements whose name is "name") of XML element thisElement) as string
-				set thisURL to (value of (XML elements whose name is "url") of XML element thisElement) as string
-				set thisIcon to (value of (XML elements whose name is "image") of XML element thisElement) as string
-
-				add_result of wf with isValid given theUid:"", theArg:thisURL, theTitle:" " &amp; thisArtist, theAutocomplete:"", theSubtitle:" " &amp; "Select to visit Last.fm", theIcon:artistIcon, theType:"", theQuicklook:""
-			end repeat
-		end tell
-
-	end tell
-end if
-
--- return XML data
-wf's to_xml("")
-</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Get similar artists from Last.fm</string>
-				<key>title</key>
-				<string>Last.fm Similar Artist Look-Up</string>
-				<key>type</key>
-				<integer>6</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>75DA8139-FA68-4C6B-8383-639D3ACC6464</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string>+</string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>FEA0C7EF-3E08-4DAB-A8B8-CD38C1305344</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -465,20 +290,9 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 			<key>colorindex</key>
 			<integer>1</integer>
 			<key>xpos</key>
-			<integer>535</integer>
+			<integer>415</integer>
 			<key>ypos</key>
-			<integer>155</integer>
-		</dict>
-		<key>1D4B7C7A-9945-46A4-8149-3FC043D2FB7A</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>12</integer>
-			<key>note</key>
-			<string>OneUpdater</string>
-			<key>xpos</key>
-			<integer>335</integer>
-			<key>ypos</key>
-			<integer>20</integer>
+			<integer>30</integer>
 		</dict>
 		<key>41CAF0BA-B8EA-42C4-BB2F-39BE9886AC0E</key>
 		<dict>
@@ -487,16 +301,16 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 			<key>xpos</key>
 			<integer>30</integer>
 			<key>ypos</key>
-			<integer>155</integer>
+			<integer>30</integer>
 		</dict>
 		<key>75DA8139-FA68-4C6B-8383-639D3ACC6464</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>1</integer>
 			<key>xpos</key>
-			<integer>335</integer>
+			<integer>215</integer>
 			<key>ypos</key>
-			<integer>155</integer>
+			<integer>30</integer>
 		</dict>
 		<key>9884769E-27DA-48F7-9765-FF3F73F7B5E2</key>
 		<dict>
@@ -507,20 +321,33 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 			<key>xpos</key>
 			<integer>30</integer>
 			<key>ypos</key>
-			<integer>265</integer>
+			<integer>140</integer>
 		</dict>
-		<key>FEA0C7EF-3E08-4DAB-A8B8-CD38C1305344</key>
+		<key>B104381E-1A26-4D7F-B781-45FD7AB09E14</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>12</integer>
+			<key>note</key>
+			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>200</integer>
+			<integer>415</integer>
 			<key>ypos</key>
-			<integer>185</integer>
+			<integer>140</integer>
 		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>apiKey</key>
+		<string>7b0b713a611b9e099b470baadab061c1</string>
+		<key>searchLimit</key>
+		<string>30</string>
+		<key>similarLimit</key>
+		<string>30</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.2.1</string>
+	<string>1.30</string>
 	<key>webaddress</key>
 	<string>https://github.com/dotson/Lastfm-Lookup</string>
 </dict>
