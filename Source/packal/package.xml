@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Last.fm Look-Up</name>
-  <version>1.1</version>
-  <bundle>com.dotson.lastsim</bundle>
-  <updated>1464634273</updated>
-  <file>last.fm_look-up.alfredworkflow</file>
-</workflow>
