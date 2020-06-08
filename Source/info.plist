@@ -10,13 +10,13 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
+				<string>D5FFFEAD-5DD2-4CE9-8247-47450E759871</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
-				<false/>
+				<true/>
 			</dict>
 			<dict>
 				<key>destinationuid</key>
@@ -55,6 +55,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>D5FFFEAD-5DD2-4CE9-8247-47450E759871</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>C. Dotson</string>
@@ -66,6 +79,53 @@
 	<string>Last.fm Look-Up</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>One moment, checking Last.fm for {query}...</string>
+				<key>script</key>
+				<string>osascript ./ScriptFilter2.scpt "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Get similar artists from Last.fm</string>
+				<key>title</key>
+				<string>Last.fm Similar Artist Look-Up</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>D5FFFEAD-5DD2-4CE9-8247-47450E759871</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -94,7 +154,7 @@
 				<key>runningsubtext</key>
 				<string>One moment, checking Last.fm for {query}...</string>
 				<key>script</key>
-				<string>osascript ./ScriptFilter.scpt "{query}"</string>
+				<string>osascript ./ScriptFilter1.scpt "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -162,6 +222,19 @@
 			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
 			<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>ls_ext</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>9884769E-27DA-48F7-9765-FF3F73F7B5E2</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -256,19 +329,6 @@ fi</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>ls_ext</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>9884769E-27DA-48F7-9765-FF3F73F7B5E2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string>Lastfm-Lookup
@@ -288,7 +348,7 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 		<key>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>410</integer>
+			<integer>680</integer>
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
@@ -326,11 +386,20 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 			<key>xpos</key>
 			<integer>410</integer>
 			<key>ypos</key>
-			<integer>140</integer>
+			<integer>150</integer>
+		</dict>
+		<key>D5FFFEAD-5DD2-4CE9-8247-47450E759871</key>
+		<dict>
+			<key>xpos</key>
+			<integer>410</integer>
+			<key>ypos</key>
+			<integer>30</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
 	<dict>
+		<key>apiKey</key>
+		<string>7b0b713a611b9e099b470baadab061c1</string>
 		<key>searchLimit</key>
 		<string>30</string>
 		<key>similarLimit</key>
@@ -339,7 +408,7 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.3.1</string>
+	<string>1.3.2</string>
 	<key>webaddress</key>
 	<string>https://github.com/dotson/Lastfm-Lookup</string>
 </dict>
