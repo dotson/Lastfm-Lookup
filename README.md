@@ -10,3 +10,6 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 - As you type an artist name, the workflow searches Last.fm for your query and provides a list of possible matches.
 - Selecting an artist form the list provides a new list of Last.fm's Similar Artists for the previously chosen one.
 - Selecting an artist from the new list takes you to their Last.fm page.
+
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?hosted_button_id=N67Q99HLLYR9N)
