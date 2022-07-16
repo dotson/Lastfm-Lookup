@@ -6,21 +6,11 @@
 	<string>com.dotson.lastsim</string>
 	<key>connections</key>
 	<dict>
-		<key>3C4CC11D-E0C2-40BD-9CDE-3F4F702ACC77</key>
+		<key>0143A207-5958-4AF3-BB3E-9E4839FFCE84</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>D5FFFEAD-5DD2-4CE9-8247-47450E759871</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<true/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>B104381E-1A26-4D7F-B781-45FD7AB09E14</string>
+				<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -33,7 +23,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3C4CC11D-E0C2-40BD-9CDE-3F4F702ACC77</string>
+				<string>CB72C108-316E-4CDF-9794-90285468F96B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -46,7 +36,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>3C4CC11D-E0C2-40BD-9CDE-3F4F702ACC77</string>
+				<string>CB72C108-316E-4CDF-9794-90285468F96B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -55,17 +45,27 @@
 				<false/>
 			</dict>
 		</array>
-		<key>D5FFFEAD-5DD2-4CE9-8247-47450E759871</key>
+		<key>CB72C108-316E-4CDF-9794-90285468F96B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
+				<string>B104381E-1A26-4D7F-B781-45FD7AB09E14</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
 				<key>vitoclose</key>
 				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>0143A207-5958-4AF3-BB3E-9E4839FFCE84</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
 			</dict>
 		</array>
 	</dict>
@@ -79,165 +79,6 @@
 	<string>Last.fm Look-Up</string>
 	<key>objects</key>
 	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>One moment, checking Last.fm for {query}...</string>
-				<key>script</key>
-				<string>osascript ./ScriptFilter2.scpt "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Get similar artists from Last.fm</string>
-				<key>title</key>
-				<string>Last.fm Similar Artist Look-Up</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>D5FFFEAD-5DD2-4CE9-8247-47450E759871</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>keyword</key>
-				<string>ls</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<false/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>One moment, checking Last.fm for {query}...</string>
-				<key>script</key>
-				<string>osascript ./ScriptFilter1.scpt "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>Get similar artists from Last.fm</string>
-				<key>title</key>
-				<string>Last.fm Similar Artist Look-Up</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>3C4CC11D-E0C2-40BD-9CDE-3F4F702ACC77</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>37</integer>
-				<key>hotmod</key>
-				<integer>1310720</integer>
-				<key>hotstring</key>
-				<string>L</string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>41CAF0BA-B8EA-42C4-BB2F-39BE9886AC0E</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string>+</string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>triggerid</key>
-				<string>ls_ext</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>9884769E-27DA-48F7-9765-FF3F73F7B5E2</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -329,6 +170,242 @@ fi</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>keyword</key>
+				<string>ls</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>1</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>One moment, checking Last.fm for {query}</string>
+				<key>script</key>
+				<string>set query to "{query}"
+set nowPlayingQuery to ""
+
+set workflowFolder to do shell script "pwd"
+set wlib to load script POSIX file (workflowFolder &amp; "/q_workflow.scpt")
+set wf to wlib's new_workflow()
+
+-- INITIALIZE THE ICONS and LINKS --
+set artistIcon to "artist.png"
+set lfmSearchLink to (system attribute "lfm_search_link")
+set apiKey to (system attribute "apiKey")
+
+if length of query is 0 then
+	-- check for currently playing artist in Music app
+	set title to "Last.fm Similar Artist Look-Up"
+	set subtitle to "Start typing to search for an artist"
+	if application "Music" is running then
+		tell application "Music"
+			if player state is playing then
+				set thisSong to current track
+				set nowPlayingQuery to (get artist of thisSong)
+				set query to nowPlayingQuery
+				set title to "Current Artist: " &amp; query
+				set subtitle to "Select below to explore similar artists in Alfred window."
+			end if
+		end tell
+	end if
+	add_result of wf without isValid given theUid:"", theArg:"", theTitle:title, theAutocomplete:"", theSubtitle:subtitle, theIcon:"", theType:"", theQuicklookurl:""
+end if
+
+if length of query is greater than 0 then
+	
+	tell application "System Events"
+		
+		set resultCount to 0
+		
+		set queryString to wf's q_encode_url(query as string)
+		set lfmSearchLink to lfmSearchLink &amp; queryString &amp; "&amp;api_key=" &amp; apiKey
+		set json to wf's request_json(lfmSearchLink)
+		set results to results of json
+		set itemsPerPage to |opensearch:itemsPerPage| of results as integer
+		set totalResults to |opensearch:totalResults| of results as integer
+		
+		if totalResults is less than itemsPerPage then
+			set resultCount to totalResults
+		else
+			set resultCount to itemsPerPage
+		end if
+		if query is nowPlayingQuery then set resultCount to 1
+		
+		if resultCount is less than 1 then
+			add_result of wf with isValid given theUid:"", theArg:"", theTitle:"No matches for: " &amp; query, theAutocomplete:"", theSubtitle:"Check your spelling, or maybe you need less obscure taste in music.", theIcon:"", theType:"", theQuicklookurl:""
+		else
+			
+			set artistMatches to artistMatches of results
+			set artistList to (artist of artistMatches)
+			repeat with i from 1 to resultCount
+				set thisResult to item i of artistList
+				set thisName to |name| of thisResult
+				set thisUrl to |url| of thisResult
+				set thisListeners to (listeners of thisResult) as integer
+				set thisListeners to do shell script "echo " &amp; thisListeners &amp; " | perl -lpe'1 while s/^([-+]?\\d+)(\\d{3})/$1,$2/'"
+				
+				add_result of wf with isValid given theUid:"", theArg:thisName, theTitle:thisName, theAutocomplete:thisName, theSubtitle:thisListeners &amp; " Listeners", theIcon:artistIcon, theType:"", theQuicklookurl:thisUrl
+				
+				
+			end repeat
+		end if
+	end tell
+	
+end if
+
+-- return XML data
+wf's to_xml("")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Get similar artists from Last.fm</string>
+				<key>title</key>
+				<string>Last.fm Similar Artist Look-Up</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>CB72C108-316E-4CDF-9794-90285468F96B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string>+</string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>One moment, checking Last.fm for {query}...</string>
+				<key>script</key>
+				<string>set query to "{query}"set workflowFolder to do shell script "pwd"set wlib to load script POSIX file (workflowFolder &amp; "/q_workflow.scpt")set wf to wlib's new_workflow()-- INITIALIZE THE ICONS and LINKS --set artistIcon to "artist.png"set lfmSimLink to (system attribute "lfm_similar_link")set apiKey to (system attribute "apiKey")tell application "System Events"		set resultCount to 0	set similarLimit to (system attribute "user_similar_limit")		set queryString to query		set queryStringEncode to wf's q_encode_url(queryString as string)	set lfmSimLink to lfmSimLink &amp; queryStringEncode &amp; "&amp;api_key=" &amp; apiKey &amp; "&amp;limit=" &amp; similarLimit	set json to wf's request_json(lfmSimLink)	set resultCount to count of artist of similarartists of json		if resultCount is less than 1 then		add_result of wf with isValid given theUid:"", theArg:"", theTitle:"No matches for: " &amp; queryString, theAutocomplete:"", theSubtitle:"Check your spelling, or maybe you need less obscure taste in music.", theIcon:"", theType:"", theQuicklookurl:""	else				if resultCount is greater than similarLimit then			set resultCount to similarLimit		end if				add_result of wf without isValid given theUid:"", theArg:"", theTitle:"Similar Artists for: " &amp; queryString, theAutocomplete:"", theSubtitle:"Select below to open in your browser. Press Shift or Cmd+Y to view in Quicklook", theIcon:"", theType:"", theQuicklookurl:""				set artistList to (artist of similarartists of json)		repeat with i from 1 to similarLimit			set thisResult to item i of artistList			set thisName to |name| of thisResult			set thisUrl to |url| of thisResult			add_result of wf with isValid given theUid:"", theArg:thisUrl, theTitle:thisName, theAutocomplete:"", theSubtitle:"", theIcon:artistIcon, theType:"", theQuicklookurl:thisUrl					end repeat			end if	end tell-- return XML datawf's to_xml("")</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Get similar artists from Last.fm</string>
+				<key>title</key>
+				<string>Last.fm Similar Artist Look-Up</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>0143A207-5958-4AF3-BB3E-9E4839FFCE84</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>37</integer>
+				<key>hotmod</key>
+				<integer>1179648</integer>
+				<key>hotstring</key>
+				<string>L</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedApps</key>
+				<array>
+					<string>com.microsoft.VSCode</string>
+				</array>
+				<key>relatedAppsMode</key>
+				<integer>2</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>41CAF0BA-B8EA-42C4-BB2F-39BE9886AC0E</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>availableviaurlhandler</key>
+				<false/>
+				<key>triggerid</key>
+				<string>ls_ext</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>9884769E-27DA-48F7-9765-FF3F73F7B5E2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Lastfm-Lookup
@@ -336,35 +413,40 @@ fi</string>
 
 *Alfred workflow to retrieve similar artist info*
 
+This version is compatible with Alfred 5
+
 Search Last.fm database for an artist and retrieve a list of suggested artists. Selecting the similar artist from Alfred's list takes you to the Last.fm page for more info.
 
 - "LS" or Hotkey triggers the workflow.
-- Initially populates with a search for the currently playing track in iTunes, if one is playing.
+- Initially populates with a search for the currently playing track in the Music app, if one is playing.
 - As you type an artist name, the workflow searches Last.fm for your query and provides a list of possible matches.
-- Selecting an artist form the list provides a new list of Last.fm's Similar Artists for the previously chosen one.
-- Selecting an artist from the new list takes you to their Last.fm page.</string>
+- Click 'shift' or 'command+Y' to view any item in Apple's Quickview window
+- Selecting an artist from the list provides a new list of Last.fm's Similar Artists for the initially chosen one.
+- Selecting an artist from the new list takes you to their Last.fm page, or you can view it in Apple's QuickView window.</string>
 	<key>uidata</key>
 	<dict>
+		<key>0143A207-5958-4AF3-BB3E-9E4839FFCE84</key>
+		<dict>
+			<key>note</key>
+			<string>Get list of similar artists</string>
+			<key>xpos</key>
+			<real>410</real>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
 		<key>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</key>
 		<dict>
 			<key>xpos</key>
-			<integer>680</integer>
+			<real>610</real>
 			<key>ypos</key>
-			<integer>30</integer>
-		</dict>
-		<key>3C4CC11D-E0C2-40BD-9CDE-3F4F702ACC77</key>
-		<dict>
-			<key>xpos</key>
-			<integer>210</integer>
-			<key>ypos</key>
-			<integer>30</integer>
+			<real>160</real>
 		</dict>
 		<key>41CAF0BA-B8EA-42C4-BB2F-39BE9886AC0E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>25</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>30</integer>
+			<real>160</real>
 		</dict>
 		<key>9884769E-27DA-48F7-9765-FF3F73F7B5E2</key>
 		<dict>
@@ -373,9 +455,9 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 			<key>note</key>
 			<string>Allows this workflow to be triggered by other workflows.</string>
 			<key>xpos</key>
-			<integer>25</integer>
+			<real>30</real>
 			<key>ypos</key>
-			<integer>140</integer>
+			<real>285</real>
 		</dict>
 		<key>B104381E-1A26-4D7F-B781-45FD7AB09E14</key>
 		<dict>
@@ -384,31 +466,57 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 			<key>note</key>
 			<string>OneUpdater</string>
 			<key>xpos</key>
-			<integer>410</integer>
+			<real>410</real>
 			<key>ypos</key>
-			<integer>150</integer>
+			<real>15</real>
 		</dict>
-		<key>D5FFFEAD-5DD2-4CE9-8247-47450E759871</key>
+		<key>CB72C108-316E-4CDF-9794-90285468F96B</key>
 		<dict>
+			<key>note</key>
+			<string>Search for an artist</string>
 			<key>xpos</key>
-			<integer>410</integer>
+			<real>210</real>
 			<key>ypos</key>
-			<integer>30</integer>
+			<real>160</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>30</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>The maximum number of similar artists to request from Last.fm</string>
+			<key>label</key>
+			<string>Similar Artist Count</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>user_similar_limit</string>
+		</dict>
+	</array>
 	<key>variables</key>
 	<dict>
 		<key>apiKey</key>
 		<string>7b0b713a611b9e099b470baadab061c1</string>
-		<key>searchLimit</key>
-		<string>30</string>
-		<key>similarLimit</key>
-		<string>30</string>
+		<key>lfm_search_link</key>
+		<string>http://ws.audioscrobbler.com/2.0/?method=artist.search&amp;format=json&amp;artist=</string>
+		<key>lfm_similar_link</key>
+		<string>http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&amp;format=json&amp;artist=</string>
 	</dict>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.3.2</string>
+	<string>1.4.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/dotson/Lastfm-Lookup</string>
 </dict>
