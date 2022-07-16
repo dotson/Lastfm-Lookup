@@ -3,6 +3,8 @@ Lastfm-Lookup
 
 *Alfred workflow to retrieve similar artist info*
 
+This version is compatible with Alfred 5
+
 Search Last.fm database for an artist and retrieve a list of suggested artists. Selecting the similar artist from Alfred's list takes you to the Last.fm page for more info.
 
 - "LS" or Hotkey triggers the workflow.
