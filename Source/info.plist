@@ -90,7 +90,7 @@
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
 readonly remote_info_plist='https://raw.githubusercontent.com/dotson/Lastfm-Lookup/master/Source/info.plist'
 readonly workflow_url='https://github.com/dotson/Lastfm-Lookup/raw/master/Last.fm%20Look-Up.alfredworkflow'
-readonly download_type='github_release'
+readonly download_type='direct'
 readonly frequency_check='4'
 
 # FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
@@ -295,23 +295,6 @@ wf's to_xml("")</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string>+</string>
-				<key>url</key>
-				<string>{query}</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -394,6 +377,27 @@ wf's to_xml("")</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string>+</string>
+				<key>url</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>0D7AB2A5-DEFD-4BA4-AD03-DBD75A88088A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>availableviaurlhandler</key>
 				<false/>
 				<key>triggerid</key>
@@ -408,12 +412,11 @@ wf's to_xml("")</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Lastfm-Lookup
-=============
+	<string># Lastfm-Lookup
 
 *Alfred workflow to retrieve similar artist info*
 
-This version is compatible with Alfred 5
+**Starting with version 1.4.0, this workflow is compatible with Alfred 5.**
 
 Search Last.fm database for an artist and retrieve a list of suggested artists. Selecting the similar artist from Alfred's list takes you to the Last.fm page for more info.
 
@@ -513,10 +516,8 @@ Search Last.fm database for an artist and retrieve a list of suggested artists. 
 		<key>lfm_similar_link</key>
 		<string>http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&amp;format=json&amp;artist=</string>
 	</dict>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
-	<string>1.4.0</string>
+	<string>1.4.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/dotson/Lastfm-Lookup</string>
 </dict>
